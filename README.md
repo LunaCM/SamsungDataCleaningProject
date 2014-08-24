@@ -9,4 +9,6 @@ The run_analysis function then uses cbind and rbind to conglomerate the data tog
 
 For Step 3 I have set up a for loop containing a series of if statements which assign the proper activity labels to the appropriate rows.
 
+For Step 4 I have stripped out the non-alphanumeric characters which might cause problems for some types of processing. 
+
 For Step 5 I have an aggregate command which takes the mean of the data divided up by activity and subject. This data is then written out to a text file called "final.txt" in the "UCI HAR Dataset" folder.   

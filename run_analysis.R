@@ -15,7 +15,7 @@ run_analysis <- function() {
    
    c1 <- rbind(t2, t3)                                 #merge the data
    colnames(c1) <- t1[,2]                              #add labels
-   names(c1)[562] <- "Activity Number"
+   names(c1)[562] <- "ActivityNumber"
    names(c1)[563] <- "Subject"
    
    write.csv(c1, file="UCI HAR Dataset/merged.csv")    #save to new file
@@ -36,10 +36,10 @@ run_analysis <- function() {
          c3[i,91] = "Walking"
       }
       if (c3[i,89] == 2) {
-         c3[i,91] = "Walking Upstairs"
+         c3[i,91] = "WalkingUpstairs"
       }
       if (c3[i,89] == 3) {
-         c3[i,91] = "Walking Downstairs"
+         c3[i,91] = "WalkingDownstairs"
       }
       if (c3[i,89] == 4) {
          c3[i,91] = "Sitting"
@@ -51,8 +51,10 @@ run_analysis <- function() {
          c3[i,91] = "Laying"
       }
    }
-   names(c3)[91] <- "Activity Label" 
+   names(c3)[91] <- "ActivityLabel" 
    
+   tempnames <- names(c3)
+   tempnames <- gsub("[^a-zA-Z0-9]","",tempnames)  #stripping odd characters out of the names
+   names(c3) <-tempnames
    write.table(c3, file="UCI HAR Dataset/final.txt", row.name=FALSE)
-   
 }  
